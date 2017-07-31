@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme.AppBarOverlay">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    <!--
+    app:layout_collapseMode="pin"
+    app:layout_scrollFlags="scroll|enterAlways"
+    app:theme="@style/Toolbar"
+    -->
+
+</android.support.design.widget.AppBarLayout>
+
+    <!--
+        AppBarLayout é um ViewGroup que cria efeitos de scrolling contraindo e expandindo
+    -->
+
+    <!--
+        Toolbar é um ViewGroup que pode estar situado em qualquer parte dos layouts XML. A aparencia e
+        comportamento da Toolbar pode ser facilmente customizados em constraste com a ActionBar
+
+        Para usar a Toolbar como ActionBar, primeiro certifique-se de que a biblioteca de suporte
+        AppCompat-v7 está adicionada à sua aplicação no build.gradle.
+
+        compile 'com.android.support:appcompat-v7:25.2.0'
+
+        Segundo, desabilite o tema fornecido pela ActionBar. A Maneira mais fácil é fazer seu tema
+        extender de Theme.AppCompat.NoActionBar dentro de res/styles.xml
+
+        <resources>
+            <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
+        </resources>
+
+        Então, vc precisa adicionar a Toolbar em seu arquivo de layout da Activity
+        <android.support.v7.widget.Toolbar ... android:minHeight="/attr/actionBarSize" .../>
+
+        Nota: Vc poderá adicionar android:fitsSystemWindows="true" ao layout pai de Toolbar para
+        certificar que a altura da activity é calculada corretamente
+
+        Na sua Activity ou Fragment, defina a Toolbar para atuar como ActionBar da seguinte forma no
+        metodo onCreate():
+
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar)
+            setSupportActionBar(toolbar)
+
+        no método onCreateOptionsMenu(): isto adiciona itens a actionBar se eles estiverem presentes no
+        arquivo res/menu/menu_main.xml
+
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+            return true
+
+            <menu xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+                <item android:id="@+id/miCompose" android:icon="@drawable/ic_compose"
+                    app:showAsAction="ifRoom" android:title="Compose"/>
+                <item android:id="@+id/miProfile" android:icon="@drawable/ic_profile"
+                    app:showAsAction="ifRoom|withText" android:title="Profile"/>
+
+            </menu>
+    -->

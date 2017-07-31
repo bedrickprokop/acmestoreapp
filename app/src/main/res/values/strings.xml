@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">ACMEStore</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="et_useradd_email_required">Email is required</string>
+    <string name="et_useradd_email_invalid">Email is too short</string>
+    <string name="rb_useradd_coyote">Coyote</string>
+    <string name="rb_useradd_roadrunner">RoadRunner</string>
+    <string name="tv_useradd_email">Provide your email</string>
+    <string name="bt_useradd_create">Create</string>
+    <string name="tv_productadd_name">Name</string>
+    <string name="tv_productadd_unitprice">Unit price</string>
+    <string name="tv_productadd_description">Description</string>
+    <string name="activity_title_productadd">New Product</string>
+    <string name="et_productadd_name_required">Name is required</string>
+    <string name="et_productadd_unitprice_required">Price is required</string>
+    <string name="et_productadd_unitprice_notnumber">Price is not a number</string>
+    <string name="et_productadd_description_required">Description is required</string>
+    <string name="activity_title_productdetail">Detail</string>
+</resources>
