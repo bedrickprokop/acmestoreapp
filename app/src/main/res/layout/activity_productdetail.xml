@@ -91,13 +91,13 @@
 
             </LinearLayout>
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/tv_productdetail_owner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="gregs@gmail.com"
-                android:textSize="14sp" />
+                android:textSize="14sp" />-->
 
         </LinearLayout>
 

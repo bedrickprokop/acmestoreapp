@@ -9,26 +9,22 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 
 import java.util.ArrayList;
 
 import br.com.acmestore.Constants;
 import br.com.acmestore.Injection;
-import br.com.acmestore.R;
 import br.com.acmestore.MainActivity;
-import br.com.acmestore.view.LoaderDialog;
+import br.com.acmestore.R;
 import br.com.acmestore.data.entity.Product;
 import br.com.acmestore.data.entity.User;
 import br.com.acmestore.data.service.UserServiceApi;
+import br.com.acmestore.view.LoaderDialog;
 
 public class UserAddActivity extends AppCompatActivity {
 
     private UserServiceApi mApi;
-    private boolean isCoyote;
-
     private EditText edUserAddEmail;
-
     private LoaderDialog mLoaderDialog;
 
     @Override
@@ -37,23 +33,6 @@ public class UserAddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_useradd);
 
         mApi = Injection.provideUserServiceApiImpl();
-        isCoyote = true;
-
-        RadioButton rbUserAddCoyote = (RadioButton) findViewById(R.id.rb_useradd_coyote);
-        rbUserAddCoyote.setChecked(true);
-        rbUserAddCoyote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onRadioButtonClicked(v);
-            }
-        });
-        RadioButton rbUserAddRoadRunner = (RadioButton) findViewById(R.id.rb_useradd_roadrunner);
-        rbUserAddRoadRunner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onRadioButtonClicked(v);
-            }
-        });
 
         edUserAddEmail = (EditText) findViewById(R.id.et_useradd_email);
         edUserAddEmail.setOnFocusChangeListener(new FocusListener(R.id.et_useradd_email));
@@ -64,7 +43,6 @@ public class UserAddActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String email = edUserAddEmail.getText().toString();
-                String type = isCoyote ? "COYOTE" : "ROADRUNNER";
                 Double money = 100.000d;
 
                 if (isFormValid(email)) {
@@ -74,7 +52,7 @@ public class UserAddActivity extends AppCompatActivity {
                     mLoaderDialog.setCancelable(false);
                     mLoaderDialog.show();
 
-                    User user = new User(email, type, money, new ArrayList<Product>());
+                    User user = new User(email, money, new ArrayList<Product>());
                     mApi.create(user, new UserServiceApi.UserCallback<User>() {
                         @Override
                         public void onLoad(User data) {
@@ -90,25 +68,6 @@ public class UserAddActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void onRadioButtonClicked(View view) {
-        boolean checked = ((RadioButton) view).isChecked();
-
-        switch (view.getId()) {
-            case R.id.rb_useradd_coyote:
-                if (checked) {
-                    isCoyote = true;
-                }
-                break;
-            case R.id.rb_useradd_roadrunner:
-                if (checked) {
-                    isCoyote = false;
-                }
-                break;
-            default:
-                break;
-        }
     }
 
     private boolean isFormValid(String email) {

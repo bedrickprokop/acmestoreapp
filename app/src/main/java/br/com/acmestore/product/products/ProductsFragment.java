@@ -70,7 +70,7 @@ public class ProductsFragment extends Fragment implements ProductsContract.View 
     private EndlessScrolling.OnLoadMoreListener mOnLoadMoreListener = new EndlessScrolling.OnLoadMoreListener() {
         @Override
         public void onLoadMore(int page) {
-            mPresenter.loadProductList(null == currentUser ? null : currentUser.getId(), productStatus, page, false);
+            mPresenter.loadProductList(fromView.equals("all") ? null : currentUser.getId(), productStatus, page, false);
         }
     };
 
@@ -130,7 +130,7 @@ public class ProductsFragment extends Fragment implements ProductsContract.View 
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mPresenter.loadProductList(null == currentUser ? null : currentUser.getId(), productStatus, 1, true);
+                mPresenter.loadProductList(fromView.equals("all") ? null : currentUser.getId(), productStatus, 1, true);
             }
         });
     }
@@ -156,7 +156,7 @@ public class ProductsFragment extends Fragment implements ProductsContract.View 
             mAdapter.addData((CopyOnWriteArrayList<Product>) savedInstanceState.get(Constants.INTENT_KEY_PRODUCTLIST));
             mAdapter.setPage(savedInstanceState.getInt(Constants.INTENT_KEY_CURRENTPAGE));
         } else {
-            mPresenter.loadProductList(null == currentUser ? null : currentUser.getId(), productStatus, 1, true);
+            mPresenter.loadProductList(fromView.equals("all") ? null : currentUser.getId(), productStatus, 1, true);
         }
     }
 
@@ -229,6 +229,7 @@ public class ProductsFragment extends Fragment implements ProductsContract.View 
         Intent intent = new Intent(this.getActivity(), ProductDetailActivity.class);
         intent.putExtra(Constants.INTENT_KEY_PRODUCTID, productId);
         intent.putExtra(Constants.INTENT_KEY_FROMVIEW, this.fromView);
+        intent.putExtra(Constants.INTENT_KEY_USER, currentUser);
         getActivity().startActivityForResult(intent, Constants.REQUESTCODE_PRODUCTDETAIL);
     }
 

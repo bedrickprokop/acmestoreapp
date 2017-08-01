@@ -23,8 +23,8 @@ public class ProductAddPresenter implements ProductAddContract.UserActionListene
     }
 
     @Override
-    public void createNewProduct(Product student) {
-        mServiceApi.create(student, new ProductServiceApi.ProductCallback<Product>() {
+    public void createNewProduct(Product product) {
+        mServiceApi.create(product, new ProductServiceApi.ProductCallback<Product>() {
             @Override
             public void onLoaded(Product data) {
                 String name = data.getName().split(Constants.BLANK_SPACE)[0];

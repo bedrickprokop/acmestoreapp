@@ -7,10 +7,11 @@ import java.util.List;
 import br.com.acmestore.Constants;
 import br.com.acmestore.data.entity.Product;
 import br.com.acmestore.data.service.ProductServiceApi;
+import br.com.acmestore.data.service.UserServiceApi;
 
 public class ProductsPresenter implements ProductsContract.UserActionListener {
 
-    private ProductServiceApi mApi;
+    private ProductServiceApi productServiceApi;
     private ProductsContract.View mView;
 
     private int selectedProductPosition;
@@ -18,7 +19,7 @@ public class ProductsPresenter implements ProductsContract.UserActionListener {
 
     public ProductsPresenter(@NonNull ProductServiceApi productServiceApi,
                              @NonNull ProductsContract.View productsView) {
-        this.mApi = productServiceApi;
+        this.productServiceApi = productServiceApi;
         this.mView = productsView;
 
         this.selectedProductPosition = -1;
@@ -34,9 +35,10 @@ public class ProductsPresenter implements ProductsContract.UserActionListener {
             mView.setListProgressIndicator(true);
         }
 
-        mApi.list(ownerId, status, page, new ProductServiceApi.ProductCallback<List<Product>>() {
+        productServiceApi.list(ownerId, status, page, new ProductServiceApi.ProductCallback<List<Product>>() {
             @Override
             public void onLoaded(List<Product> data) {
+
 
                 if (doRefresh) {
                     mView.setProgressIndicator(false);
@@ -68,7 +70,7 @@ public class ProductsPresenter implements ProductsContract.UserActionListener {
     @Override
     public void deleteSelectedProduct() {
 
-        mApi.delete(selectedProduct, new ProductServiceApi.ProductCallback<Product>() {
+        productServiceApi.delete(selectedProduct, new ProductServiceApi.ProductCallback<Product>() {
             @Override
             public void onLoaded(Product data) {
                 mView.changeActionBarWhenProductUnselected(ProductsPresenter.this.selectedProductPosition);

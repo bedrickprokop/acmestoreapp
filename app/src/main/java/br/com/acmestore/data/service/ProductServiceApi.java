@@ -22,7 +22,7 @@ public interface ProductServiceApi {
 
     void delete(Product product, ProductCallback<Product> callback);
 
-    void buy(Long productId, ProductCallback<Boolean> callback);
+    void buy(Long buyerId, Long productId, ProductCallback<Boolean> callback);
 
     void sell(Long productId, ProductCallback<Boolean> callback);
 }

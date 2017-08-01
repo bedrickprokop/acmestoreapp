@@ -12,6 +12,9 @@ public class Product implements Serializable {
 
     //TOSELL or BOUGHT
     private String status;
+
+    //TODO analisar
+    private Long ownerId;
     private User owner;
 
     public Product() {
@@ -31,6 +34,7 @@ public class Product implements Serializable {
         this.unitPrice = unitPrice;
         this.status = status;
         this.owner = owner;
+        this.ownerId = owner.getId();
     }
 
     public Long getId() {
@@ -79,6 +83,14 @@ public class Product implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
     }
 
     public User getOwner() {

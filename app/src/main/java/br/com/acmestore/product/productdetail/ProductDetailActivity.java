@@ -22,11 +22,13 @@ import br.com.acmestore.Constants;
 import br.com.acmestore.Injection;
 import br.com.acmestore.R;
 import br.com.acmestore.data.entity.Product;
+import br.com.acmestore.data.entity.User;
 
 public class ProductDetailActivity extends AppCompatActivity implements ProductDetailContract.View {
 
     private ProductDetailContract.UserActionListener mActionListener;
     private Long productId;
+    private User currentUser;
 
     private LinearLayout mContent;
     private SwipeRefreshLayout mSwipeRefresh;
@@ -34,7 +36,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     private TextView tvProductDetailName;
     private TextView tvProductDetailDescription;
     private TextView tvProductDetailUnitPrice;
-    private TextView tvProductDetailOwner;
+    //private TextView tvProductDetailOwner;
     private ImageView ivProductDetailPicture;
 
     private String fromView;
@@ -88,6 +90,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
 
     private void setupContentView() {
         productId = (Long) getIntent().getExtras().get(Constants.INTENT_KEY_PRODUCTID);
+        currentUser = (User) getIntent().getExtras().get(Constants.INTENT_KEY_USER);
 
         mContent = (LinearLayout) findViewById(R.id.productdetail_content);
 
@@ -107,7 +110,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
         tvProductDetailName = (TextView) findViewById(R.id.tv_productdetail_name);
         tvProductDetailDescription = (TextView) findViewById(R.id.tv_productdetail_description);
         tvProductDetailUnitPrice = (TextView) findViewById(R.id.tv_productdetail_unitprice);
-        tvProductDetailOwner = (TextView) findViewById(R.id.tv_productdetail_owner);
+        //tvProductDetailOwner = (TextView) findViewById(R.id.tv_productdetail_owner);
 
         ivProductDetailPicture = (ImageView) findViewById(R.id.iv_productdetail_picture);
 
@@ -117,7 +120,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
             btProductDetailPurchase.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mActionListener.buyProduct(productId);
+                    mActionListener.buyProduct(currentUser.getId(), productId);
                 }
             });
         } else if (fromView.equals("purchased")) {
@@ -174,7 +177,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
         tvProductDetailDescription.setText(product.getDescription());
         tvProductDetailUnitPrice.setText(Constants.DOLLAR_SIGN.concat(Constants.BLANK_SPACE)
                 .concat(product.getUnitPrice().toString()));
-        tvProductDetailOwner.setText("Seller: ".concat(product.getOwner().getEmail()));
+        //tvProductDetailOwner.setText("Seller: ".concat(product.getOwner().getEmail()));
     }
 
     @Override

@@ -21,7 +21,7 @@ public class FakeProductServiceApiImpl implements ProductServiceApi {
 
     static {
         PRODUCT_LIST = new ArrayList<>();
-        RANDOM_OWNER = new User(new Long(2), "kirb@gmail.com", "COYOTE", 500d, PRODUCT_LIST);
+        RANDOM_OWNER = new User(new Long(2), "kirb@gmail.com", 500d, PRODUCT_LIST);
 
         for (int i = 0; i < 20; i++) {
             Product product = new Product(new Long(i + 1), "EarthQuake Pills " + (i + 1),
@@ -33,7 +33,7 @@ public class FakeProductServiceApiImpl implements ProductServiceApi {
 
 
         MY_PRODUCT_LIST_BOUGHT = new ArrayList<>();
-        ME = new User(new Long(1), "greg@gmail.com", "COYOTE", 500d, MY_PRODUCT_LIST_BOUGHT);
+        ME = new User(new Long(1), "greg@gmail.com", 500d, MY_PRODUCT_LIST_BOUGHT);
         for (int i = 0; i < 20; i++) {
             Product product = new Product(new Long(i + 1), "AXLE GREASE " + (i + 1),
                     "ACME AXLE GREASE - Guaranteed Slippery! " + (i + 1),

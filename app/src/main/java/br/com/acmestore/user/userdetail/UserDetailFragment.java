@@ -26,7 +26,6 @@ public class UserDetailFragment extends Fragment {
     private LoaderDialog mLoaderDialog;
 
     private TextView tvUserDetailEmail;
-    private TextView tvUserDetailType;
     private TextView tvUserDetailMoney;
 
     private Button btUserDetailDelete;
@@ -56,9 +55,6 @@ public class UserDetailFragment extends Fragment {
 
         tvUserDetailEmail = (TextView) view.findViewById(R.id.tv_userdetail_emal);
         tvUserDetailEmail.setText("User: ".concat(currentUser.getEmail()));
-
-        tvUserDetailType = (TextView) view.findViewById(R.id.tv_userdetail_type);
-        tvUserDetailType.setText("Type: ".concat(currentUser.getType()));
 
         tvUserDetailMoney = (TextView) view.findViewById(R.id.tv_userdetail_money);
         tvUserDetailMoney.setText("Money: U$".concat(currentUser.getMoney().toString()));

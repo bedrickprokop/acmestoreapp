@@ -22,8 +22,6 @@ public class Constants {
     public static final String DOLLAR_SIGN = "U$";
 
     //endpoint constants
-    public static final String BASE_SERVICE_URL = "";
-
-
-    public static final String BASE_RANDOM_IMAGE = "http://robohash.org/";
+    public static final String BASE_SERVICE_URL = "http://acmestorewebapp.azurewebsites.net/api/";
+    public static final String BASE_RANDOM_IMAGE = "http://lorempixel.com/100/100/technics/";
 }

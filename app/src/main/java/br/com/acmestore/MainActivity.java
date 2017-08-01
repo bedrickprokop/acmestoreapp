@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setupComponents();
 
         if (null == savedInstanceState) {
-            mProductsFragment = createProductsFragment(null, "TOSELL", true, false, "all");
+            mProductsFragment = createProductsFragment(currentUser, "TOSELL", true, false, "all");
             initFragment(mProductsFragment);
         }
     }
@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                     ProductsFragment productsToSellFragment = null;
                     if (fromView.equals("all")) {
                         mActionBar.setTitle("All");
-                        productsToSellFragment = createProductsFragment(null, "TOSELL", true, false, fromView);
+                        productsToSellFragment = createProductsFragment(currentUser, "TOSELL", true, false, fromView);
                     } else if (fromView.equals("purchased")) {
                         mActionBar.setTitle("Purchased");
                         productsToSellFragment = createProductsFragment(currentUser, "BOUGHT", true, false, fromView);

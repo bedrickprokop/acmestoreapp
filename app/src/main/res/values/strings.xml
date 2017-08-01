@@ -9,7 +9,7 @@
     <string name="et_useradd_email_invalid">Email is too short</string>
     <string name="rb_useradd_coyote">Coyote</string>
     <string name="rb_useradd_roadrunner">RoadRunner</string>
-    <string name="tv_useradd_email">Provide your email</string>
+    <string name="tv_useradd_email">Type your email here</string>
     <string name="bt_useradd_create">Create</string>
     <string name="tv_productadd_name">Name</string>
     <string name="tv_productadd_unitprice">Unit price</string>

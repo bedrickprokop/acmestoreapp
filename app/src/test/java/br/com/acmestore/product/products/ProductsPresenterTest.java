@@ -24,7 +24,7 @@ public class ProductsPresenterTest {
 
     static {
         PRODUCT_LIST = new ArrayList<>();
-        OWNER = new User(new Long(1), "Gregs", "COYOTE", 500d, new ArrayList<Product>());
+        OWNER = new User(new Long(1), "Gregs", 500d, new ArrayList<Product>());
 
         for (int i = 0; i < 20; i++) {
             Product product = new Product(new Long(i + 1), "AcmeProduct " + (i + 1),

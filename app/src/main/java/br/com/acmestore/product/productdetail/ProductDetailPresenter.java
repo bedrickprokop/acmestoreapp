@@ -34,8 +34,8 @@ public class ProductDetailPresenter implements ProductDetailContract.UserActionL
     }
 
     @Override
-    public void buyProduct(Long productId) {
-        mServiceApi.buy(productId, new ProductServiceApi.ProductCallback<Boolean>() {
+    public void buyProduct(Long buyerId, Long productId) {
+        mServiceApi.buy(buyerId, productId, new ProductServiceApi.ProductCallback<Boolean>() {
             @Override
             public void onLoaded(Boolean data) {
                 if (data) {

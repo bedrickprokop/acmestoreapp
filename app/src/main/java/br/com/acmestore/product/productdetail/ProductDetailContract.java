@@ -19,7 +19,7 @@ public interface ProductDetailContract {
 
         void loadProduct(Long productId);
 
-        void buyProduct(Long productId);
+        void buyProduct(Long buyerId, Long productId);
 
         void sellProduct(Long productId);
 
