@@ -71,7 +71,7 @@ public class UserDetailFragment extends Fragment {
 
                 mApi.delete(currentUser, new UserServiceApi.UserCallback<User>() {
                     @Override
-                    public void onLoad(User data) {
+                    public void onLoaded(User data) {
 
                         mLoaderDialog.dismiss();
                         getActivity().finish();

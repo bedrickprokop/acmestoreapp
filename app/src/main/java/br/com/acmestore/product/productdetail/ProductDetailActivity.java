@@ -20,9 +20,11 @@ import com.squareup.picasso.Picasso;
 
 import br.com.acmestore.Constants;
 import br.com.acmestore.Injection;
+import br.com.acmestore.MainActivity;
 import br.com.acmestore.R;
 import br.com.acmestore.data.entity.Product;
 import br.com.acmestore.data.entity.User;
+import br.com.acmestore.user.useradd.UserAddActivity;
 
 public class ProductDetailActivity extends AppCompatActivity implements ProductDetailContract.View {
 
@@ -40,6 +42,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     private ImageView ivProductDetailPicture;
 
     private String fromView;
+    private Boolean fromNotification;
 
     private Button btProductDetailPurchase; //vier da lista de produtos
     private Button btProductDetailSell;     //vier da lista de comprados
@@ -49,16 +52,29 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productdetail);
-
-        Bundle extras = getIntent().getExtras();
-        fromView = extras.getString(Constants.INTENT_KEY_FROMVIEW);
-
         mActionListener = new ProductDetailPresenter(Injection.provideProductServiceApiImpl(), this);
 
+        setupExtras(getIntent().getExtras());
         setupActionBar();
         setupContentView();
-
         loadData(savedInstanceState);
+    }
+
+    private void setupExtras(Bundle extras) {
+        fromView = extras.getString(Constants.INTENT_KEY_FROMVIEW);
+        productId = (Long) extras.get(Constants.INTENT_KEY_PRODUCTID);
+        currentUser = (User) extras.get(Constants.INTENT_KEY_USER);
+        fromNotification = extras.getBoolean("fromNotification");
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (fromNotification) {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra(Constants.INTENT_KEY_USER, currentUser);
+            startActivity(intent);
+        }
+        super.onDestroy();
     }
 
     private void setupActionBar() {
@@ -89,9 +105,6 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     }
 
     private void setupContentView() {
-        productId = (Long) getIntent().getExtras().get(Constants.INTENT_KEY_PRODUCTID);
-        currentUser = (User) getIntent().getExtras().get(Constants.INTENT_KEY_USER);
-
         mContent = (LinearLayout) findViewById(R.id.productdetail_content);
 
         mSwipeRefresh = (SwipeRefreshLayout) findViewById(R.id.productdetail_swiperefresh);

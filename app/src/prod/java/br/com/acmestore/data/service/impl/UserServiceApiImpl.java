@@ -20,7 +20,7 @@ public class UserServiceApiImpl implements UserServiceApi {
             public void onResponse(Call<User> call, Response<User> response) {
                 User body = response.body();
                 user.setId(body.getId());
-                callback.onLoad(user);
+                callback.onLoaded(user);
             }
 
             @Override
@@ -38,7 +38,7 @@ public class UserServiceApiImpl implements UserServiceApi {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
-                    callback.onLoad(user);
+                    callback.onLoaded(user);
                 }
             }
 
@@ -49,7 +49,20 @@ public class UserServiceApiImpl implements UserServiceApi {
     }
 
     @Override
-    public void findById(Long userId, UserCallback<User> callback) {
-        //TODO not using
+    public void findById(Long userId, final UserCallback<User> callback) {
+        Call<User> call = new HttpEndpointGenerator<UserEndpoint>()
+                .gen(UserEndpoint.class).findById(userId);
+
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                User body = response.body();
+                callback.onLoaded(body);
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+            }
+        });
     }
 }

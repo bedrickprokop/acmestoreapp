@@ -10,6 +10,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //to avoid com.android.dex.DexIndexOverflowException: method ID not in [0, 0xffff]: 65536
+        //devido as dependencieas do google-play services
+        //multiDexEnabled true
     }
     buildTypes {
         release {
@@ -68,6 +71,10 @@ dependencies {
 
     compile "com.android.support.constraint:constraint-layout:$supportLibraryConstraintVersion"
 
+    //GOOGLE PLAY SERVICES
+    //compile 'com.google.android.gms:play-services:11.0.4'
+    compile 'com.google.android.gms:play-services-gcm:11.0.4'
+
     // RETROFIT
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
@@ -123,3 +130,5 @@ configurations.compile.dependencies.each { compileDependency ->
         configurations.androidTestCompile.exclude module: "${compileDependency.getName()}"
     }
 }
+
+apply plugin: 'com.google.gms.google-services'

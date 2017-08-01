@@ -230,6 +230,7 @@ public class ProductsFragment extends Fragment implements ProductsContract.View 
         intent.putExtra(Constants.INTENT_KEY_PRODUCTID, productId);
         intent.putExtra(Constants.INTENT_KEY_FROMVIEW, this.fromView);
         intent.putExtra(Constants.INTENT_KEY_USER, currentUser);
+        intent.putExtra("fromNotification", false);
         getActivity().startActivityForResult(intent, Constants.REQUESTCODE_PRODUCTDETAIL);
     }
 

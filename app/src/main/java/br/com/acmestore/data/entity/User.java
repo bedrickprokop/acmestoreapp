@@ -8,19 +8,21 @@ public class User implements Serializable {
     private Long id;
     private String email;
     private Double money;
+    private String token;
     private List<Product> productList;
 
     public User() {
     }
 
-    public User(String email, Double money, List<Product> productList) {
-        this(null, email, money, productList);
+    public User(String email, Double money, String token, List<Product> productList) {
+        this(null, email, money, token, productList);
     }
 
-    public User(Long id, String email, Double money, List<Product> productList) {
+    public User(Long id, String email, Double money, String token, List<Product> productList) {
         this.id = id;
         this.email = email;
         this.money = money;
+        this.token = token;
         this.productList = productList;
     }
 
@@ -46,6 +48,14 @@ public class User implements Serializable {
 
     public void setMoney(Double money) {
         this.money = money;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public List<Product> getProductList() {

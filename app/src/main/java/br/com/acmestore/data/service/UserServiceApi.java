@@ -5,7 +5,7 @@ import br.com.acmestore.data.entity.User;
 public interface UserServiceApi {
 
     interface UserCallback<T> {
-        void onLoad(T data);
+        void onLoaded(T data);
     }
 
     void create(User user, UserCallback<User> callback);

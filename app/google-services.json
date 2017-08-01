@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "206611683948",
+    "firebase_url": "https://acmestore-6acc3.firebaseio.com",
+    "project_id": "acmestore-6acc3",
+    "storage_bucket": "acmestore-6acc3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206611683948:android:ae92953849b7bebd",
+        "android_client_info": {
+          "package_name": "br.com.acmestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "206611683948-s6atmrmv9gmq8t8k2a5fsbfr2ajf3t71.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY12ce-7l8Wig_6Qtd-icQ2SPWMVp0fBE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
