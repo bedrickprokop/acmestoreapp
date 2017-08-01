@@ -10,6 +10,7 @@ public class Constants {
     public static final String INTENT_KEY_FROMVIEW = "fromView";
     public static final String INTENT_KEY_CURRENTPAGE = "currentPage";
     public static final String INTENT_KEY_MESSAGE = "message";
+    public static final String INTENT_KEY_FROMNOTIFICATION = "fromNotification";
 
     //request codes
     public static final int REQUESTCODE_PRODUCTADD = 100;

@@ -64,7 +64,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
         fromView = extras.getString(Constants.INTENT_KEY_FROMVIEW);
         productId = (Long) extras.get(Constants.INTENT_KEY_PRODUCTID);
         currentUser = (User) extras.get(Constants.INTENT_KEY_USER);
-        fromNotification = extras.getBoolean("fromNotification");
+        fromNotification = extras.getBoolean(Constants.INTENT_KEY_FROMNOTIFICATION);
     }
 
     @Override
