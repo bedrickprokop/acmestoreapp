@@ -20,10 +20,15 @@ public class MyGcmListenerService extends GcmListenerService {
 
     @Override
     public void onMessageReceived(String from, Bundle bundle) {
-        String message = bundle.getString("message");
-        MessageQueue messageQueue = new Gson().fromJson(message, MessageQueue.class);
 
-        sendNotification(messageQueue);
+        Long productId = Long.parseLong(bundle.getString("productId"));
+        Boolean fromNotification = Boolean.parseBoolean(bundle.getString("fromNotification"));
+        String fromView = bundle.getString("fromView");
+        String strUser = bundle.getString("user");
+        User user = new Gson().fromJson(strUser, User.class);
+        String message = bundle.getString("message");
+
+        sendNotification(new MessageQueue(productId, fromNotification, fromView, user, message));
     }
 
     private void sendNotification(MessageQueue messageQueue) {

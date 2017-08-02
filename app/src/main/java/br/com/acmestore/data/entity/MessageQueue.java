@@ -10,6 +10,17 @@ public class MessageQueue implements Serializable {
     private User user;
     private String message;
 
+    public MessageQueue() {
+    }
+
+    public MessageQueue(Long productId, Boolean fromNotification, String fromView, User user, String message) {
+        this.productId = productId;
+        this.fromNotification = fromNotification;
+        this.fromView = fromView;
+        this.user = user;
+        this.message = message;
+    }
+
     public Long getProductId() {
         return productId;
     }
